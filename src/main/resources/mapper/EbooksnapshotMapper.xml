@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dmsserver.mapper.EbooksnapshotMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.dmsserver.entity.Ebooksnapshot">
+        <id column="id" property="id" />
+        <result column="ebookId" property="ebookId" />
+        <result column="date" property="date" />
+        <result column="viewCount" property="viewCount" />
+        <result column="voteCount" property="voteCount" />
+        <result column="viewIncrease" property="viewIncrease" />
+        <result column="voteIncrease" property="voteIncrease" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, ebookId, date, viewCount, voteCount, viewIncrease, voteIncrease
+    </sql>
+    <update id="addlike">
+        update ebooksnapshot set voteCount = voteCount + 1 where ebookId = #{id}
+    </update>
+
+    <update id="addview">
+        update ebooksnapshot set viewCount = viewCount + 1 where ebookId = #{id}
+    </update>
+
+    <select id="likecountById" resultType="java.lang.Integer">
+        select voteCount from ebooksnapshot where ebookId = #{ebookId}
+    </select>
+
+    <select id="viewcountById" resultType="java.lang.Integer">
+        select viewCount from ebooksnapshot where ebookId = #{ebookId}
+    </select>
+
+    <select id="getMaxId" resultType="java.lang.Integer">
+        select max(id) from ebooksnapshot
+    </select>
+
+<!--    判断是否存在记录-->
+    <select id="exist" resultType="java.lang.Integer">
+        select count(*) from ebooksnapshot where ebookId = #{ebookId}
+    </select>
+
+
+</mapper>

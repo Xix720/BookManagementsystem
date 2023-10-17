@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dmsserver.mapper.EbookMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.dmsserver.entity.Ebook">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="category1Id" property="category1Id" />
+        <result column="category2Id" property="category2Id" />
+        <result column="description" property="description" />
+        <result column="cover" property="cover" />
+        <result column="docCount" property="docCount" />
+        <result column="viewCount" property="viewCount" />
+        <result column="voteCount" property="voteCount" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, category1Id, category2Id, description, cover, docCount, viewCount, voteCount
+    </sql>
+
+</mapper>
